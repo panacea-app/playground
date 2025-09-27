@@ -116,10 +116,7 @@
             setTimeout(() => {
                 isSiteUp().then(result => {
                     if (result) {
-                        const load = document.querySelector('.spinner')
-                        fadeOut(load, 200, () => {
-                            window.location.href = targetUrl
-                        })
+                        window.location.href = targetUrl
                     } else {
                         const spin = document.querySelector('#loading')
                         const err = document.querySelector('#error')
@@ -132,6 +129,7 @@
     </script>
 </body>
 </html>
+
 
 
 
