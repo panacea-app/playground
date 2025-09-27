@@ -92,14 +92,14 @@
             <h1>:(</h1>
             <h2><center>The Panacea servers cannot be reached.<br>Please try again later.</center></h2>
             <br>
-            <button class="refresh" onlick="reloadPage()">Retry</button>
+            <button class="refresh" onclick="reloadPage()">Retry</button>
         </div>
     </div>
     <iframe src="http://api-panacea.hopto.org:16180" allowfullscreen></iframe>
     <script src="fade.js"></script>
     <script>
         function reloadPage(){
-            window.location.href = window.location.href;
+            location.reload(true);
         }
         function isSiteUp(url) {
             return new Promise(resolve => {
@@ -128,4 +128,5 @@
 </body>
 
 </html>
+
 
