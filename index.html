@@ -86,7 +86,7 @@
 <body>
     <div class="loading-screen">
         <div id="loading">
-            <img src="assets/spin.webp">
+            <img src="assets/spin.webp" class="spinner">
         </div>
         <div id="error" class="hidden">
             <h1>:(</h1>
@@ -95,9 +95,9 @@
             <button class="refresh" onclick="reloadPage()">Retry</button>
         </div>
     </div>
-    <iframe src="http://api-panacea.hopto.org:16180" allowfullscreen></iframe>
-    <script src="fade.js"></script>
     <script>
+        targetUrl = 'http://api.panacea.hopto.org:16180/'
+        
         function reloadPage(){
             location.reload(true);
         }
@@ -113,8 +113,10 @@
             setTimeout(() => {
                 isSiteUp('http://api-panacea.hopto.org:16180/assets/favicon.ico').then(result => {
                     if (result.up) {
-                        const load = document.querySelector('.loading-screen')
-                        fadeOut(load, 400)
+                        const load = document.querySelector('.spinner')
+                        fadeOut(load, 200, () => {
+                            window.location.href = targetUrl
+                        })
                     } else {
                         const spin = document.querySelector('#loading')
                         const err = document.querySelector('#error')
@@ -126,7 +128,7 @@
         })
     </script>
 </body>
-
 </html>
+
 
 
