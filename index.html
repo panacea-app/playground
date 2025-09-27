@@ -101,18 +101,20 @@
         function reloadPage(){
             location.reload(true);
         }
-        function isSiteUp(url) {
-            return new Promise(resolve => {
-                const img = new Image();
-                img.onload = () => resolve({ up: true, url });
-                img.onerror = () => resolve({ up: false, url });
-                img.src = `${url}?cacheBust=${Date.now()}`;
-            });
+        async function isSiteUp() {
+            let ping = await fetch("https://api.uptimerobot.com/v2/getMonitors?api_key=m801464173-bce624fffe86fb4e60e28c17", {method: "POST"})
+            const data = await ping.json();
+            if (data.monitors[0].status === 2){
+                return true
+            }
+            else{
+                return false
+            }
         }
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => {
-                isSiteUp('http://api-panacea.hopto.org:16180/assets/favicon.ico').then(result => {
-                    if (result.up) {
+                isSiteUp().then(result => {
+                    if (result) {
                         const load = document.querySelector('.spinner')
                         fadeOut(load, 200, () => {
                             window.location.href = targetUrl
@@ -129,6 +131,7 @@
     </script>
 </body>
 </html>
+
 
 
 
