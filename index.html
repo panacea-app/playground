@@ -99,7 +99,7 @@
     <script src="fade.js"></script>
     <script>
         function reloadPage(){
-            location.reload(true);
+            window.location.href = window.location.href;
         }
         function isSiteUp(url) {
             return new Promise(resolve => {
@@ -128,3 +128,4 @@
 </body>
 
 </html>
+
