@@ -46,7 +46,6 @@ document.getElementById("send").addEventListener('click', function() {
                 const response = await fetch("https://openrouter.panacea-ai-24.workers.dev/", {
                     method: "POST",
                     headers: {
-                        "Authorization": `Bearer ${API_KEY}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
@@ -115,5 +114,6 @@ document.getElementById("send").addEventListener('click', function() {
         sendPrompt()
     }
 })
+
 
 
