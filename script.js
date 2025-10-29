@@ -27,7 +27,6 @@ document.getElementById("send").addEventListener('click', function() {
         addChatMessage(message)
         chatArea.appendChild(spinner)
         async function sendPrompt() {
-            const API_KEY = "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";
             const MODEL_ID = "openai/gpt-oss-20b:free";
 
             const messagePrompt = `**Role**
@@ -44,8 +43,7 @@ document.getElementById("send").addEventListener('click', function() {
             ${message}`
 
             try {
-                const proxy = "https://cors-anywhere.herokuapp.com/";
-                const response = await fetch(proxy + "https://openrouter.ai/api/v1/chat/completions", {
+                const response = await fetch("https://openrouter.panacea-ai-24.workers.dev/", {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${API_KEY}`,
@@ -117,4 +115,5 @@ document.getElementById("send").addEventListener('click', function() {
         sendPrompt()
     }
 })
+
 
