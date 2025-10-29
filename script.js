@@ -44,7 +44,8 @@ document.getElementById("send").addEventListener('click', function() {
             ${message}`
 
             try {
-                const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                const proxy = "https://cors-anywhere.herokuapp.com/";
+                const response = await fetch(proxy + "https://openrouter.ai/api/v1/chat/completions", {
                     method: "POST",
                     headers: {
                         "Authorization": `Bearer ${API_KEY}`,
@@ -116,3 +117,4 @@ document.getElementById("send").addEventListener('click', function() {
         sendPrompt()
     }
 })
+
